@@ -7,29 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 07 Sep 2018 00:00:00 +0000</lastBuildDate>
-    
+
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+
+
     <item>
       <title>First Post</title>
       <link>/post/first-post/</link>
       <pubDate>Fri, 07 Sep 2018 00:00:00 +0000</pubDate>
-      
+
       <guid>/post/first-post/</guid>
       <description>So this is the first post on my new Data portfolio. Phew what a journey! This blog has spent over eight months on my to do list. But now it is alive!
 So let&amp;rsquo;s try and recap everything so far. Why am I here? How did I get here? And where to from here?
 Well I am Elleni. I am, and for the past 10 years have been a photographer. I run my own business/businesses here:</description>
     </item>
+
     
-    <item>
-      <title></title>
-      <link>/post/2018-09-07-first-post/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2018-09-07-first-post/</guid>
-      <description>First Post       code{white-space: pre;} pre:not([class]) { background-color: white; }  if (window.hljs) { hljs.configure({languages: []}); hljs.initHighlightingOnLoad(); if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } }  h1 { font-size: 34px; } h1.title { font-size: 38px; } h2 { font-size: 30px; } h3 { font-size: 24px; } h4 { font-size: 18px; } h5 { font-size: 16px; } h6 { font-size: 12px; } .</description>
-    </item>
-    
+
   </channel>
 </rss>
