@@ -1,0 +1,5 @@
+library(blogdown)
+
+new_site(theme = 'spf13/hyde')
+
+new_post()
