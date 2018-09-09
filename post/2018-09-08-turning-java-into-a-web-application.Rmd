@@ -1,0 +1,23 @@
+---
+title: Turning Java into a Web Application
+author: Elleni Toumpas
+date: '2018-09-08'
+slug: turning-java-into-a-web-application
+categories:
+  - Java
+tags: []
+Categories:
+  - Development
+  - GoLang
+Description: ''
+Tags:
+  - Development
+  - golang
+menu: main
+---
+
+So today's blog focusses on putting one of my recently built Java games online. I am currently in the process of building an online portfolio to present a few things I have worked on so far in my course but also to showcase tasks I have worked on in my spare time. 
+
+During a 2 hour window last week I decided to push my Java skills to build a very basic Tic Tac Toe (Noughts and Crosses) game. Even though Java isn't really a traditional 'Data Science' language, I am studying a Programming Fundamentals subject this semester that utilisies the Java language to teach the fundamentals of object oriented programming. As someone who has only really dabbled in a few coding languages up until now, studying a Programming Fundamentals is giving me a bit more confidence and understanding on the basics of code.  
+
+Last week I decided to push what I have learnt so far in class by creating a game from scratch. Now that I have a (very basic) game to throw in my portfolio, I need to understand the technology required to put my game online.
