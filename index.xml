@@ -7,48 +7,41 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
-    
+
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+
+
     <item>
       <title>PROJECT BREAKDOWN - A data science investigation on the NYT anonymous op-ed] -  [PART 1]</title>
       <link>/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/</link>
       <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
-      
+
       <guid>/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/</guid>
       <description>Starting a new data anaylsis project at the moment feels so overwhelming. There are so may techniques I currently don’t understand OR am even aware of. To overcome this I have decided to research other data scientists and the steps they take in their own project. By emulating these projects, understanding the initial scope of the project, the tools and algorithms they have used and understanding why they might have chosen those techniques I hope to become more proficient and confident in this industry.</description>
     </item>
-    
+
     <item>
       <title>Turning Java into a Web Application</title>
       <link>/post/turning-java-into-a-web-application/</link>
       <pubDate>Sat, 08 Sep 2018 00:00:00 +0000</pubDate>
-      
+
       <guid>/post/turning-java-into-a-web-application/</guid>
       <description>So today’s blog focusses on putting one of my recently built Java games online. I am currently in the process of building an online portfolio to present a few things I have worked on so far in my course but also to showcase tasks I have worked on in my spare time.
 During a 2 hour window last week I decided to push my Java skills to build a very basic Tic Tac Toe (Noughts and Crosses) game.</description>
     </item>
-    
+
     <item>
       <title>First Post</title>
       <link>/post/first-post/</link>
       <pubDate>Fri, 07 Sep 2018 00:00:00 +0000</pubDate>
-      
+
       <guid>/post/first-post/</guid>
       <description>So this is the first post on my new Data portfolio. Phew what a journey! This blog has spent over eight months on my to do list. But now it is alive!
 So let&amp;rsquo;s try and recap everything so far. Why am I here? How did I get here? And where to from here?
 Well I am Elleni. I am, and for the past 10 years have been a photographer. I run my own business/businesses here:</description>
     </item>
-    
-    <item>
-      <title></title>
-      <link>/post/2018-09-07-first-post/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/post/2018-09-07-first-post/</guid>
-      <description>First Post       code{white-space: pre;} pre:not([class]) { background-color: white; }  if (window.hljs) { hljs.configure({languages: []}); hljs.initHighlightingOnLoad(); if (document.readyState &amp;&amp; document.readyState === &#34;complete&#34;) { window.setTimeout(function() { hljs.initHighlighting(); }, 0); } }  h1 { font-size: 34px; } h1.title { font-size: 38px; } h2 { font-size: 30px; } h3 { font-size: 24px; } h4 { font-size: 18px; } h5 { font-size: 16px; } h6 { font-size: 12px; } .</description>
-    </item>
-    
+
+
+
   </channel>
 </rss>

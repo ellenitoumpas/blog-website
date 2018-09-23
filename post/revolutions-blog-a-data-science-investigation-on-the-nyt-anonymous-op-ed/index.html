@@ -118,22 +118,22 @@ library(broom)</code></pre>
 tweets_sanders &lt;- searchTwitter(&#39;@BernieSanders&#39;, n=1500)
 head(tweets_sanders)</code></pre>
 <pre><code>## [[1]]
-## [1] &quot;AgentCarter_SSR: RT @AgentCarter_SSR: @gratefulsammyca @paolamendoza @LindsayGrahamSC @BernieSanders Try @resistbot \nJust text RESIST to 50409, answer a few…&quot;
+## [1] &quot;Old_soul77: @Jennfromwv @EOpen42 @BernieSanders Also, Bernie and others like him are pushing this because they want you to vote… https://t.co/ZDYed8F4Cj&quot;
 ## 
 ## [[2]]
-## [1] &quot;JJManring: @BernieSanders https://t.co/cG5AZS7x9V&quot;
+## [1] &quot;Old_soul77: @Jennfromwv @EOpen42 @BernieSanders Yes, these government regulations are why the system needs a reboot. Do you kno… https://t.co/JordowmcQB&quot;
 ## 
 ## [[3]]
-## [1] &quot;ZiggytheP: @dillzilla99 @mf_khulse @mhermens @yaf @benshapiro @BernieSanders Right now banks are succeeding to the point of le… https://t.co/EY726Jfi51&quot;
+## [1] &quot;asdrescher: RT @BernieSanders: Just a few short years ago, a $15 minimum wage was considered a pie-in-the-sky idea. But today, state legislatures and l…&quot;
 ## 
 ## [[4]]
-## [1] &quot;ChrisJones324: RT @Ventuckyspaz: @Scraw87 @bobbiemoak @TulsiPress @BernieSanders Well stated. Agree with everything you said here. I don&#39;t agree with a lo…&quot;
+## [1] &quot;SariadeG: RT @Scraw87: @bobbiemoak @Ventuckyspaz @TulsiPress @BernieSanders Gabbard is also is a strong, credible voice against the horrors of nation…&quot;
 ## 
 ## [[5]]
-## [1] &quot;ChrisJones324: RT @Scraw87: @bobbiemoak @Ventuckyspaz @TulsiPress @BernieSanders Gabbard is also is a strong, credible voice against the horrors of nation…&quot;
+## [1] &quot;dnauerbach13: RT @People4Bernie: .@BernieSanders: Donald Trump and GOP want to cut Social Security. We should expand it instead.\n https://t.co/8LWKMdOwTe&quot;
 ## 
 ## [[6]]
-## [1] &quot;ChrisJones324: RT @Scraw87: @bobbiemoak @Ventuckyspaz @TulsiPress @BernieSanders Also, \&quot;talk\&quot; is underrated, especially for politicians. I disagree with a…&quot;</code></pre>
+## [1] &quot;dime85sg: RT @usatodayopinion: From @BernieSanders: Donald Trump is shredding the safety net while claiming Democrats want to destroy Social Security…&quot;</code></pre>
 </div>
 </div>
 <div id="scraping-a-users-tweet-history" class="section level1">
@@ -147,9 +147,9 @@ head(obamatweets_df)</code></pre>
 ##   text     favorited favoriteCount replyToSN created             truncated
 ##   &lt;chr&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dttm&gt;              &lt;lgl&gt;    
 ## 1 I&#39;m sti… FALSE           802914. POTUS44   2017-01-20 14:13:35 FALSE    
-## 2 As we l… FALSE           207191. POTUS44   2017-01-20 14:11:01 FALSE    
-## 3 I won&#39;t… FALSE           600425. POTUS44   2017-01-20 14:09:51 FALSE    
-## 4 It&#39;s be… FALSE          1612267. &lt;NA&gt;      2017-01-20 14:09:13 FALSE    
+## 2 As we l… FALSE           207192. POTUS44   2017-01-20 14:11:01 FALSE    
+## 3 I won&#39;t… FALSE           600426. POTUS44   2017-01-20 14:09:51 FALSE    
+## 4 It&#39;s be… FALSE          1612268. &lt;NA&gt;      2017-01-20 14:09:13 FALSE    
 ## 5 Proud t… FALSE           227274. &lt;NA&gt;      2017-01-19 20:39:46 TRUE     
 ## 6 To the … FALSE          1176138. &lt;NA&gt;      2017-01-17 14:59:24 TRUE     
 ## # ... with 10 more variables: replyToSID &lt;chr&gt;, id &lt;chr&gt;,
@@ -162,7 +162,7 @@ head(obamatweets_df)</code></pre>
 <pre class="r"><code>yeswecan &lt;- searchTwitter(&quot;#yeswecan exclude:retweets&quot;, n=3200)</code></pre>
 <pre><code>## Warning in doRppAPICall(&quot;search/tweets&quot;, n, params = params,
 ## retryOnRateLimit = retryOnRateLimit, : 3200 tweets were requested but the
-## API can only return 860</code></pre>
+## API can only return 858</code></pre>
 <pre class="r"><code>yeswecan &lt;- tbl_df(map_df(yeswecan, as.data.frame))
 head(yeswecan)</code></pre>
 <pre><code>## # A tibble: 6 x 16
