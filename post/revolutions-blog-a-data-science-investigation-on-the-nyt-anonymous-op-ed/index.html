@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="//gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.48" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Revolutions Blog [A data science investigation on the NYT anonymous op-ed] &middot; Elleni Toumpas</title>
+
+  
+  <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
+  <link type="text/css" rel="stylesheet" href="/css/poole.css">
+  <link type="text/css" rel="stylesheet" href="/css/syntax.css">
+  <link type="text/css" rel="stylesheet" href="/css/hyde.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Elleni Toumpas" />
+
+  
+</head>
+
+  <body class=" ">
+  <aside class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="/"><h1>Elleni Toumpas</h1></a>
+      <p class="lead">
+      A data related student in Melbourne, Australia.
+      </p>
+    </div>
+
+    <nav>
+      <ul class="sidebar-nav">
+        <li><a href="/">Home</a> </li>
+        <li><a href="/post/first-post/"> First Post </a></li><li><a href="/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/"> Revolutions Blog [A data science investigation on the NYT anonymous op-ed] </a></li><li><a href="/post/turning-java-into-a-web-application/"> Turning Java into a Web Application </a></li>
+      </ul>
+    </nav>
+
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</aside>
+
+    <main class="content container">
+    <div class="post">
+  <h1>Revolutions Blog [A data science investigation on the NYT anonymous op-ed]</h1>
+  <time datetime=2018-09-10T00:00:00Z class="post-date">Mon, Sep 10, 2018</time>
+  <p>Starting a new data anaylsis project at the moment feels so overwhelming. There are so may techniques I currently don’t understand OR am even aware of. To overcome this I have decided to research other data scientists/ analysts and the steps they take in their own project By understanding their projects, the tools and algorithms they have used and understanding why they might have chosen those techniques I hope to become more proficient and confident in this industry. I am going to call these blog write ups Project Breakdowns.</p>
+<p>My first Project Breakdown is inspired by the <a href="http://blog.revolutionanalytics.com/2018/09/anonymous-nyt-op-ed.html">“Who wrote that anonymous NYT op-ed? Text similarity analyses with R”</a> blog article on the <a href="http://blog.revolutionanalytics.com/">Revolution Analytics</a> website. The article introduces the New York Times anonymous op-ed written by a current White House staffer who reports that many staffers inside the White House are working silently to oppose or thwart Donald Trump’s agenda. The <a href="http://blog.revolutionanalytics.com/">Revolution Analytics</a> then introduces many attempts in the Data Science community to unpack the identity of who that anonymous staffer might be.</p>
+<div id="understanding-the-problem-and-steps" class="section level3">
+<h3>Understanding the problem and steps</h3>
+</div>
+<div id="scraping-tweets" class="section level3">
+<h3>Scraping Tweets</h3>
+<p>To undertake a project like this it mentions that the task began by scraping the tweets of many White House staffers. How is this done? I am not sure. Let’s research that!</p>
+<p>Using the all mighty google I found this article: <a href="http://utstat.toronto.edu/~nathan/teaching/sta4002/Class1/scrapingtwitterinR-NT.html">Scraping Twitter data and using it in R</a></p>
+<div id="install-and-load-appropriate-packages" class="section level4">
+<h4>1. Install and load appropriate packages</h4>
+<pre class="r"><code># INSTALL PACKAGES [only do this once]
+# install.packages(&quot;twitteR&quot;)
+# install.packages(&quot;tidytext&quot;)
+# install.packages(&quot;dplyr&quot;)
+# install.packages(&quot;ggplot2&quot;)
+
+# LOAD PACKAGES
+library(twitteR)
+library(tidytext)
+library(dplyr)
+library(ggplot2)</code></pre>
+</div>
+<div id="set-up-twitter" class="section level4">
+<h4>2. Set up Twitter</h4>
+<ul>
+<li>You need to have a twitter account</li>
+<li>Sign up to <a href="https://apps.twitter.com/" class="uri">https://apps.twitter.com/</a> with your account</li>
+<li>Once approved click on the “Create an app” link.</li>
+<li>Fill in the details as needed</li>
+</ul>
+</div>
+<div id="fill-in-authorisation-details" class="section level4">
+<h4>3. Fill in Authorisation details</h4>
+<pre class="r"><code># Replace consumer_key_nt, consumer_secret_nt, access_token_nt and access_secret_nt with your own API keys
+
+# consumer_key &lt;- consumer_key_nt
+# consumer_secret &lt;- consumer_secret_nt
+# access_token &lt;- access_token_nt
+# access_secret &lt;- access_secret_nt
+
+# setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)</code></pre>
+<pre><code>## [1] &quot;Using direct authentication&quot;</code></pre>
+</div>
+<div id="using-the-twitter-package-in-r" class="section level4">
+<h4>4. Using the Twitter Package in R</h4>
+<p>** What can the TwitteR package do? **</p>
+<p>Here are some notes and tutorials on what the TwitteR package for R can do.</p>
+<p><a href="http://geoffjentry.hexdump.org/twitteR.pdf" class="uri">http://geoffjentry.hexdump.org/twitteR.pdf</a></p>
+<ul>
+<li>searchTwitter - search for tweets that match a desired term e.g. hashtags, basic boolean logic such as AND and OR.</li>
+</ul>
+<p><strong>RESEARCH:</strong> <strong>- what are the limits to how many and capacity of Twitter scraping??</strong> <strong>- if I did this constantly how do I store/ automate scraping to build a library??</strong></p>
+<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
+<p><img src="/post/2018-09-10-revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<p><a href="http://varianceexplained.org/r/op-ed-text-analysis/">David Robinson</a></p>
+</div>
+</div>
+
+</div>
+
+
+    </main>
+
+    
+  </body>
+</html>

@@ -6,10 +6,19 @@
     <description>Recent content in Golang on Elleni Toumpas</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 08 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Revolutions Blog [A data science investigation on the NYT anonymous op-ed]</title>
+      <link>/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/</link>
+      <pubDate>Mon, 10 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/</guid>
+      <description>Starting a new data anaylsis project at the moment feels so overwhelming. There are so may techniques I currently don’t understand OR am even aware of. To overcome this I have decided to research other data scientists/ analysts and the steps they take in their own project By understanding their projects, the tools and algorithms they have used and understanding why they might have chosen those techniques I hope to become more proficient and confident in this industry.</description>
+    </item>
     
     <item>
       <title>Turning Java into a Web Application</title>
