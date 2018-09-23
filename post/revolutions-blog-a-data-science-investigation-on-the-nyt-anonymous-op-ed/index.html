@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Revolutions Blog [A data science investigation on the NYT anonymous op-ed] &middot; Elleni Toumpas</title>
+  <title>PROJECT BREAKDOWN - A data science investigation on the NYT anonymous op-ed] -  [PART 1] &middot; Elleni Toumpas</title>
 
   
   <link type="text/css" rel="stylesheet" href="/css/print.css" media="print">
@@ -41,7 +41,7 @@
     <nav>
       <ul class="sidebar-nav">
         <li><a href="/">Home</a> </li>
-        <li><a href="/post/first-post/"> First Post </a></li><li><a href="/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/"> Revolutions Blog [A data science investigation on the NYT anonymous op-ed] </a></li><li><a href="/post/turning-java-into-a-web-application/"> Turning Java into a Web Application </a></li>
+        <li><a href="/post/first-post/"> First Post </a></li><li><a href="/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/"> PROJECT BREAKDOWN - A data science investigation on the NYT anonymous op-ed] -  [PART 1] </a></li><li><a href="/post/turning-java-into-a-web-application/"> Turning Java into a Web Application </a></li>
       </ul>
     </nav>
 
@@ -51,12 +51,13 @@
 
     <main class="content container">
     <div class="post">
-  <h1>Revolutions Blog [A data science investigation on the NYT anonymous op-ed]</h1>
+  <h1>PROJECT BREAKDOWN - A data science investigation on the NYT anonymous op-ed] -  [PART 1]</h1>
   <time datetime=2018-09-10T00:00:00Z class="post-date">Mon, Sep 10, 2018</time>
-  <p>Starting a new data anaylsis project at the moment feels so overwhelming. There are so may techniques I currently don’t understand OR am even aware of. To overcome this I have decided to research other data scientists/ analysts and the steps they take in their own project By understanding their projects, the tools and algorithms they have used and understanding why they might have chosen those techniques I hope to become more proficient and confident in this industry. I am going to call these blog write ups Project Breakdowns.</p>
+  <p>Starting a new data anaylsis project at the moment feels so overwhelming. There are so may techniques I currently don’t understand OR am even aware of. To overcome this I have decided to research other data scientists and the steps they take in their own project. By emulating these projects, understanding the initial scope of the project, the tools and algorithms they have used and understanding why they might have chosen those techniques I hope to become more proficient and confident in this industry. I am going to call these blog write ups Project Breakdowns.</p>
 <p>My first Project Breakdown is inspired by the <a href="http://blog.revolutionanalytics.com/2018/09/anonymous-nyt-op-ed.html">“Who wrote that anonymous NYT op-ed? Text similarity analyses with R”</a> blog article on the <a href="http://blog.revolutionanalytics.com/">Revolution Analytics</a> website. The article introduces the New York Times anonymous op-ed written by a current White House staffer who reports that many staffers inside the White House are working silently to oppose or thwart Donald Trump’s agenda. The <a href="http://blog.revolutionanalytics.com/">Revolution Analytics</a> then introduces many attempts in the Data Science community to unpack the identity of who that anonymous staffer might be.</p>
 <div id="understanding-the-problem-and-steps" class="section level3">
 <h3>Understanding the problem and steps</h3>
+<p>What this project entails is</p>
 </div>
 <div id="scraping-tweets" class="section level3">
 <h3>Scraping Tweets</h3>
@@ -69,12 +70,20 @@
 # install.packages(&quot;tidytext&quot;)
 # install.packages(&quot;dplyr&quot;)
 # install.packages(&quot;ggplot2&quot;)
+# install.packages(&quot;scales&quot;)
+# install.packages(&quot;broom&quot;)
 
 # LOAD PACKAGES
 library(twitteR)
 library(tidytext)
 library(dplyr)
-library(ggplot2)</code></pre>
+library(ggplot2)
+library(stringr)
+library(purrr)
+library(tidyr)
+library(lubridate)
+library(scales)
+library(broom)</code></pre>
 </div>
 <div id="set-up-twitter" class="section level4">
 <h4>2. Set up Twitter</h4>
@@ -105,11 +114,85 @@ library(ggplot2)</code></pre>
 <ul>
 <li>searchTwitter - search for tweets that match a desired term e.g. hashtags, basic boolean logic such as AND and OR.</li>
 </ul>
-<p><strong>RESEARCH:</strong> <strong>- what are the limits to how many and capacity of Twitter scraping??</strong> <strong>- if I did this constantly how do I store/ automate scraping to build a library??</strong></p>
-<pre><code>## Warning: package &#39;bindrcpp&#39; was built under R version 3.4.4</code></pre>
-<p><img src="/post/2018-09-10-revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
-<p><a href="http://varianceexplained.org/r/op-ed-text-analysis/">David Robinson</a></p>
+<pre class="r"><code># Grab latest tweets example
+tweets_sanders &lt;- searchTwitter(&#39;@BernieSanders&#39;, n=1500)
+head(tweets_sanders)</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;AgentCarter_SSR: RT @AgentCarter_SSR: @gratefulsammyca @paolamendoza @LindsayGrahamSC @BernieSanders Try @resistbot \nJust text RESIST to 50409, answer a few…&quot;
+## 
+## [[2]]
+## [1] &quot;JJManring: @BernieSanders https://t.co/cG5AZS7x9V&quot;
+## 
+## [[3]]
+## [1] &quot;ZiggytheP: @dillzilla99 @mf_khulse @mhermens @yaf @benshapiro @BernieSanders Right now banks are succeeding to the point of le… https://t.co/EY726Jfi51&quot;
+## 
+## [[4]]
+## [1] &quot;ChrisJones324: RT @Ventuckyspaz: @Scraw87 @bobbiemoak @TulsiPress @BernieSanders Well stated. Agree with everything you said here. I don&#39;t agree with a lo…&quot;
+## 
+## [[5]]
+## [1] &quot;ChrisJones324: RT @Scraw87: @bobbiemoak @Ventuckyspaz @TulsiPress @BernieSanders Gabbard is also is a strong, credible voice against the horrors of nation…&quot;
+## 
+## [[6]]
+## [1] &quot;ChrisJones324: RT @Scraw87: @bobbiemoak @Ventuckyspaz @TulsiPress @BernieSanders Also, \&quot;talk\&quot; is underrated, especially for politicians. I disagree with a…&quot;</code></pre>
 </div>
+</div>
+<div id="scraping-a-users-tweet-history" class="section level1">
+<h1>Scraping a user’s tweet history</h1>
+<p>Understanding how to scrape a user’s tweets. Even though n = 3200, this script only imports 304 of Obama’s tweets. At a later date I will investigate why (I imagine it is due to limits based on my ‘level’ of Developer account access). It is interesting to see what detail can be brought in using this script.</p>
+<pre class="r"><code># Scrape a user&#39;s tweets
+obamatweets &lt;- userTimeline(&quot;potus44&quot;, n = 3200)
+obamatweets_df &lt;- tbl_df(map_df(obamatweets, as.data.frame))
+head(obamatweets_df)</code></pre>
+<pre><code>## # A tibble: 6 x 16
+##   text     favorited favoriteCount replyToSN created             truncated
+##   &lt;chr&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dttm&gt;              &lt;lgl&gt;    
+## 1 I&#39;m sti… FALSE           802914. POTUS44   2017-01-20 14:13:35 FALSE    
+## 2 As we l… FALSE           207191. POTUS44   2017-01-20 14:11:01 FALSE    
+## 3 I won&#39;t… FALSE           600425. POTUS44   2017-01-20 14:09:51 FALSE    
+## 4 It&#39;s be… FALSE          1612267. &lt;NA&gt;      2017-01-20 14:09:13 FALSE    
+## 5 Proud t… FALSE           227274. &lt;NA&gt;      2017-01-19 20:39:46 TRUE     
+## 6 To the … FALSE          1176138. &lt;NA&gt;      2017-01-17 14:59:24 TRUE     
+## # ... with 10 more variables: replyToSID &lt;chr&gt;, id &lt;chr&gt;,
+## #   replyToUID &lt;chr&gt;, statusSource &lt;chr&gt;, screenName &lt;chr&gt;,
+## #   retweetCount &lt;dbl&gt;, isRetweet &lt;lgl&gt;, retweeted &lt;lgl&gt;, longitude &lt;lgl&gt;,
+## #   latitude &lt;lgl&gt;</code></pre>
+<pre class="r"><code>dim(obamatweets_df)</code></pre>
+<pre><code>## [1] 304  16</code></pre>
+<p>Other bits…</p>
+<pre class="r"><code>yeswecan &lt;- searchTwitter(&quot;#yeswecan exclude:retweets&quot;, n=3200)</code></pre>
+<pre><code>## Warning in doRppAPICall(&quot;search/tweets&quot;, n, params = params,
+## retryOnRateLimit = retryOnRateLimit, : 3200 tweets were requested but the
+## API can only return 860</code></pre>
+<pre class="r"><code>yeswecan &lt;- tbl_df(map_df(yeswecan, as.data.frame))
+head(yeswecan)</code></pre>
+<pre><code>## # A tibble: 6 x 16
+##   text     favorited favoriteCount replyToSN created             truncated
+##   &lt;chr&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dttm&gt;              &lt;lgl&gt;    
+## 1 If we c… FALSE                0. &lt;NA&gt;      2018-09-23 23:39:39 FALSE    
+## 2 “women … FALSE                0. &lt;NA&gt;      2018-09-23 23:38:09 FALSE    
+## 3 &quot;@denni… FALSE                0. dennisao… 2018-09-23 23:34:49 TRUE     
+## 4 &quot;@TheUS… FALSE                1. TheUSASi… 2018-09-23 23:26:33 TRUE     
+## 5 Congrat… FALSE                2. &lt;NA&gt;      2018-09-23 22:49:59 TRUE     
+## 6 Congrat… FALSE                0. &lt;NA&gt;      2018-09-23 22:29:17 TRUE     
+## # ... with 10 more variables: replyToSID &lt;chr&gt;, id &lt;chr&gt;,
+## #   replyToUID &lt;chr&gt;, statusSource &lt;chr&gt;, screenName &lt;chr&gt;,
+## #   retweetCount &lt;dbl&gt;, isRetweet &lt;lgl&gt;, retweeted &lt;lgl&gt;, longitude &lt;chr&gt;,
+## #   latitude &lt;chr&gt;</code></pre>
+<p>Mission 1 complete. I now have a Twitter developer account and understand how to scrape Twitter feeds. In a further Part to this Project Breakdown I want to investigate how the analysis was carried out.</p>
+<p>As always I have a never ending amount of questions I’d like to answer so I will leave them here to remind myself of further topics or ideas to explore.</p>
+<p><strong>RESEARCH:</strong></p>
+<ul>
+<li><p>what are the limits to how many and capacity of Twitter scraping?</p></li>
+<li><p>if I did this constantly how do I store/ automate scraping to build a library??</p></li>
+<li><p>what is the tbl_df/ map_df code??</p></li>
+<li><p>what analysis style was used to work out potential authors</p></li>
+<li><p>look into further speech recognition projects and how they can be useful</p></li>
+<li><p>consider the moral implicatons of using this kind of technology: when could it be used for good, what are my own boundaries with this kind of thing?</p></li>
+</ul>
+<p>Until next time…</p>
+<p><strong>REFERENCES:</strong></p>
+<p><a href="http://www.interhacktives.com/2017/01/25/scrape-tweets-r-journalists/" class="uri">http://www.interhacktives.com/2017/01/25/scrape-tweets-r-journalists/</a></p>
+<p><a href="http://varianceexplained.org/r/op-ed-text-analysis/">David Robinson</a></p>
 </div>
 
 </div>

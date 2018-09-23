@@ -1,30 +1,31 @@
 ---
-title: Revolutions Blog [A data science investigation on the NYT anonymous op-ed]
+title: PROJECT BREAKDOWN - A data science investigation on the NYT anonymous op-ed]
+  -  [PART 1]
 author: Elleni Toumpas
 date: '2018-09-10'
-slug: revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed
 categories:
   - R
 tags:
   - project breakdowns
+  - twitter scraping
+slug: revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed
 Categories:
   - Development
   - GoLang
-Description: ''
 Tags:
   - Development
   - golang
 menu: main
 ---
 
-Starting a new data anaylsis project at the moment feels so overwhelming. There are so may techniques I currently don't understand OR am even aware of. To overcome this I have decided to research other data scientists/ analysts and the steps they take in their own project By understanding their projects, the tools and algorithms they have used and understanding why they might have chosen those techniques I hope to become more proficient and confident in this industry. I am going to call these blog write ups Project Breakdowns.
+Starting a  new data anaylsis project at the moment feels so overwhelming. There are so may techniques I currently don't understand OR am even aware of. To overcome this I have decided to research other data scientists and the steps they take in their own project. By emulating these projects, understanding the initial scope of the project, the tools and algorithms they have used and understanding why they might have chosen those techniques I hope to become more proficient and confident in this industry. I am going to call these blog write ups Project Breakdowns.
 
 My first Project Breakdown is inspired by the ["Who wrote that anonymous NYT op-ed? Text similarity analyses with R"](http://blog.revolutionanalytics.com/2018/09/anonymous-nyt-op-ed.html) blog article on the [Revolution Analytics](http://blog.revolutionanalytics.com/) website. The article introduces the New York Times anonymous op-ed written by a current White House staffer who reports that many staffers inside the White House are working silently to oppose or thwart Donald Trump's agenda. The [Revolution Analytics](http://blog.revolutionanalytics.com/) then introduces many attempts in the Data Science community to unpack the identity of who that anonymous staffer might be.
 
 
 ###Understanding the problem and steps
 
-
+What this project entails is 
 
 
 ###Scraping Tweets
@@ -42,12 +43,21 @@ Using the all mighty google I found this article: [Scraping Twitter data and usi
 # install.packages("tidytext")
 # install.packages("dplyr")
 # install.packages("ggplot2")
+# install.packages("scales")
+# install.packages("broom")
 
 # LOAD PACKAGES
 library(twitteR)
 library(tidytext)
 library(dplyr)
 library(ggplot2)
+library(stringr)
+library(purrr)
+library(tidyr)
+library(lubridate)
+library(scales)
+library(broom)
+
 ```
 
 ####2. Set up Twitter
@@ -83,7 +93,6 @@ setup_twitter_oauth(consumer_key, consumer_secret, access_token, access_secret)
 ```
 
 
-
 ####4. Using the Twitter Package in R
 
 ** What can the TwitteR package do? **
@@ -94,26 +103,61 @@ Here are some notes and tutorials on what the TwitteR package for R can do.
 
 - searchTwitter - search for tweets that match a desired term e.g. hashtags, basic boolean logic such as AND and OR.
 
+```{r}
+# Grab latest tweets example
+tweets_sanders <- searchTwitter('@BernieSanders', n=1500)
+head(tweets_sanders)
+```
 
 
+# Scraping a user's tweet history 
 
+Understanding how to scrape a user's tweets. Even though n = 3200, this script only imports 304 of Obama's tweets. At a later date I will investigate why (I imagine it is due to limits based on my 'level' of Developer account access). It is interesting to see what detail can be brought in using this script.
 
-**RESEARCH:**
-**- what are the limits to how many and capacity of Twitter scraping??**
-**- if I did this constantly how do I store/ automate scraping to build a library??**
+```{r}
 
-``` {r echo=FALSE}
-
-fn_twitter <- searchTwitter("#equality",n=1000,lang="en")
-fn_twitter_df <- twListToDF(fn_twitter) # Convert to data frame
-tweet_words <- fn_twitter_df %>% select(id, text) %>% unnest_tokens(word,text)
-
-tweet_words %>% count(word,sort=T) %>% slice(1:20) %>% 
-  ggplot(aes(x = reorder(word, 
-    n, function(n) -n), y = n)) + geom_bar(stat = "identity") + theme(axis.text.x = element_text(angle = 60, 
-    hjust = 1)) + xlab("")
+# Scrape a user's tweets
+obamatweets <- userTimeline("potus44", n = 3200)
+obamatweets_df <- tbl_df(map_df(obamatweets, as.data.frame))
+head(obamatweets_df)
+dim(obamatweets_df)
 
 ```
 
+Other bits...
+
+```{r}
+yeswecan <- searchTwitter("#yeswecan exclude:retweets", n=3200)
+yeswecan <- tbl_df(map_df(yeswecan, as.data.frame))
+head(yeswecan)
+
+```
+
+
+Mission 1 complete. I now have a Twitter developer account and understand how to scrape Twitter feeds. In a further Part to this Project Breakdown I want to investigate how the analysis was carried out. 
+
+As always I have a never ending amount of questions I'd like to answer so I will leave them here to remind myself of further topics or ideas to explore.
+
+**RESEARCH:**
+
+- what are the limits to how many and capacity of Twitter scraping?
+
+- if I did this constantly how do I store/ automate scraping to build a library??
+
+- what is the tbl_df/ map_df code?? 
+
+- what analysis style was used to work out potential authors
+
+- look into further speech recognition projects and how they can be useful
+
+- consider the moral implicatons of using this kind of technology: when could it be used for good, what are my own boundaries with this kind of thing?
+
+Until next time...
+
+
+
+**REFERENCES:**
+
+[http://www.interhacktives.com/2017/01/25/scrape-tweets-r-journalists/](http://www.interhacktives.com/2017/01/25/scrape-tweets-r-journalists/)
 
 [David Robinson](http://varianceexplained.org/r/op-ed-text-analysis/)
