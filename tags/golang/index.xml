@@ -6,10 +6,19 @@
     <description>Recent content in Golang on Elleni Toumpas</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 10 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 24 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/tags/golang/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>2018 Melbourne Datathon</title>
+      <link>/post/2018-melbourne-datathon/</link>
+      <pubDate>Mon, 24 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>/post/2018-melbourne-datathon/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>PROJECT BREAKDOWN - A data science investigation on the NYT anonymous op-ed] -  [PART 1]</title>

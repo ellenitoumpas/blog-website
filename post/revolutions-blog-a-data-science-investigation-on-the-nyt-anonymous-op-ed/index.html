@@ -41,7 +41,7 @@
     <nav>
       <ul class="sidebar-nav">
         <li><a href="/">Home</a> </li>
-        <li><a href="/post/first-post/"> First Post </a></li><li><a href="/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/"> PROJECT BREAKDOWN - A data science investigation on the NYT anonymous op-ed] -  [PART 1] </a></li><li><a href="/post/turning-java-into-a-web-application/"> Turning Java into a Web Application </a></li>
+        <li><a href="/post/2018-melbourne-datathon/"> 2018 Melbourne Datathon </a></li><li><a href="/post/first-post/"> First Post </a></li><li><a href="/post/revolutions-blog-a-data-science-investigation-on-the-nyt-anonymous-op-ed/"> PROJECT BREAKDOWN - A data science investigation on the NYT anonymous op-ed] -  [PART 1] </a></li><li><a href="/post/turning-java-into-a-web-application/"> Turning Java into a Web Application </a></li>
       </ul>
     </nav>
 
@@ -118,22 +118,22 @@ library(broom)</code></pre>
 tweets_sanders &lt;- searchTwitter(&#39;@BernieSanders&#39;, n=1500)
 head(tweets_sanders)</code></pre>
 <pre><code>## [[1]]
-## [1] &quot;Old_soul77: @Jennfromwv @EOpen42 @BernieSanders Also, Bernie and others like him are pushing this because they want you to vote… https://t.co/ZDYed8F4Cj&quot;
+## [1] &quot;somenycguy: @Lcoyote93 @benshapiro @BernieSanders I can’t wait!&quot;
 ## 
 ## [[2]]
-## [1] &quot;Old_soul77: @Jennfromwv @EOpen42 @BernieSanders Yes, these government regulations are why the system needs a reboot. Do you kno… https://t.co/JordowmcQB&quot;
+## [1] &quot;cheyenne_groth: I voted for @BernieSanders in the primary, but I&#39;m regretting that vote. Jeffrey is the 4th black person I&#39;ve seen… https://t.co/cZgmr5JNY8&quot;
 ## 
 ## [[3]]
-## [1] &quot;asdrescher: RT @BernieSanders: Just a few short years ago, a $15 minimum wage was considered a pie-in-the-sky idea. But today, state legislatures and l…&quot;
+## [1] &quot;BLK_Z51: @RonSwanson19 @SirKnicksAlot @BernieSanders Everyone knows you can&#39;t trust Google anymore.&quot;
 ## 
 ## [[4]]
-## [1] &quot;SariadeG: RT @Scraw87: @bobbiemoak @Ventuckyspaz @TulsiPress @BernieSanders Gabbard is also is a strong, credible voice against the horrors of nation…&quot;
+## [1] &quot;glavema: RT @BernieSanders: We live in a nation that spent centuries denying the right to vote to the poor, to women, and to people of color. We mus…&quot;
 ## 
 ## [[5]]
-## [1] &quot;dnauerbach13: RT @People4Bernie: .@BernieSanders: Donald Trump and GOP want to cut Social Security. We should expand it instead.\n https://t.co/8LWKMdOwTe&quot;
+## [1] &quot;LisaM3732: @NaphiSoc @SallyDeal4 Time to #PostponeTheVote and have an #FBIInvestigationNow @SenatorCollins @lisamurkowski… https://t.co/jomgEY1390&quot;
 ## 
 ## [[6]]
-## [1] &quot;dime85sg: RT @usatodayopinion: From @BernieSanders: Donald Trump is shredding the safety net while claiming Democrats want to destroy Social Security…&quot;</code></pre>
+## [1] &quot;_TrumpFanPage: @BernieSanders and @Ocasio2018:\nAmerica is the greatest country in the world.\nWe defeated:\nSlavery \nNazis \nCommunis… https://t.co/GfqTPhQ8vK&quot;</code></pre>
 </div>
 </div>
 <div id="scraping-a-users-tweet-history" class="section level1">
@@ -146,12 +146,12 @@ head(obamatweets_df)</code></pre>
 <pre><code>## # A tibble: 6 x 16
 ##   text     favorited favoriteCount replyToSN created             truncated
 ##   &lt;chr&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dttm&gt;              &lt;lgl&gt;    
-## 1 I&#39;m sti… FALSE           802914. POTUS44   2017-01-20 14:13:35 FALSE    
+## 1 I&#39;m sti… FALSE           802905. POTUS44   2017-01-20 14:13:35 FALSE    
 ## 2 As we l… FALSE           207192. POTUS44   2017-01-20 14:11:01 FALSE    
-## 3 I won&#39;t… FALSE           600426. POTUS44   2017-01-20 14:09:51 FALSE    
-## 4 It&#39;s be… FALSE          1612268. &lt;NA&gt;      2017-01-20 14:09:13 FALSE    
+## 3 I won&#39;t… FALSE           600418. POTUS44   2017-01-20 14:09:51 FALSE    
+## 4 It&#39;s be… FALSE          1612269. &lt;NA&gt;      2017-01-20 14:09:13 FALSE    
 ## 5 Proud t… FALSE           227274. &lt;NA&gt;      2017-01-19 20:39:46 TRUE     
-## 6 To the … FALSE          1176138. &lt;NA&gt;      2017-01-17 14:59:24 TRUE     
+## 6 To the … FALSE          1176101. &lt;NA&gt;      2017-01-17 14:59:24 TRUE     
 ## # ... with 10 more variables: replyToSID &lt;chr&gt;, id &lt;chr&gt;,
 ## #   replyToUID &lt;chr&gt;, statusSource &lt;chr&gt;, screenName &lt;chr&gt;,
 ## #   retweetCount &lt;dbl&gt;, isRetweet &lt;lgl&gt;, retweeted &lt;lgl&gt;, longitude &lt;lgl&gt;,
@@ -162,18 +162,18 @@ head(obamatweets_df)</code></pre>
 <pre class="r"><code>yeswecan &lt;- searchTwitter(&quot;#yeswecan exclude:retweets&quot;, n=3200)</code></pre>
 <pre><code>## Warning in doRppAPICall(&quot;search/tweets&quot;, n, params = params,
 ## retryOnRateLimit = retryOnRateLimit, : 3200 tweets were requested but the
-## API can only return 858</code></pre>
+## API can only return 856</code></pre>
 <pre class="r"><code>yeswecan &lt;- tbl_df(map_df(yeswecan, as.data.frame))
 head(yeswecan)</code></pre>
 <pre><code>## # A tibble: 6 x 16
 ##   text     favorited favoriteCount replyToSN created             truncated
 ##   &lt;chr&gt;    &lt;lgl&gt;             &lt;dbl&gt; &lt;chr&gt;     &lt;dttm&gt;              &lt;lgl&gt;    
-## 1 If we c… FALSE                0. &lt;NA&gt;      2018-09-23 23:39:39 FALSE    
-## 2 “women … FALSE                0. &lt;NA&gt;      2018-09-23 23:38:09 FALSE    
-## 3 &quot;@denni… FALSE                0. dennisao… 2018-09-23 23:34:49 TRUE     
-## 4 &quot;@TheUS… FALSE                1. TheUSASi… 2018-09-23 23:26:33 TRUE     
-## 5 Congrat… FALSE                2. &lt;NA&gt;      2018-09-23 22:49:59 TRUE     
-## 6 Congrat… FALSE                0. &lt;NA&gt;      2018-09-23 22:29:17 TRUE     
+## 1 #VoteTh… FALSE                0. &lt;NA&gt;      2018-09-24 01:06:09 TRUE     
+## 2 @Kokomo… FALSE                0. Kokomoth… 2018-09-24 00:47:28 TRUE     
+## 3 &quot;@4YrsT… FALSE                0. 4YrsToday 2018-09-24 00:43:03 FALSE    
+## 4 @leelee… FALSE                0. leeleeb50 2018-09-24 00:06:21 FALSE    
+## 5 &quot;😂😍🤘🏻 #… FALSE                0. &lt;NA&gt;      2018-09-23 23:48:22 FALSE    
+## 6 If we c… FALSE                0. &lt;NA&gt;      2018-09-23 23:39:39 FALSE    
 ## # ... with 10 more variables: replyToSID &lt;chr&gt;, id &lt;chr&gt;,
 ## #   replyToUID &lt;chr&gt;, statusSource &lt;chr&gt;, screenName &lt;chr&gt;,
 ## #   retweetCount &lt;dbl&gt;, isRetweet &lt;lgl&gt;, retweeted &lt;lgl&gt;, longitude &lt;chr&gt;,
